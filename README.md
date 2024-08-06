@@ -4,8 +4,8 @@
 
 ## Prerequisites
 1. Download the JAR file used in this example into the root folder
-   1. Pre-compiled JAR [https://github.com/ozzysChiefDataScientist/flink_java_11_job/blob/main/build/libs/my_first_flink_job_java_11.jar](here)
-   2. Alteratively, clone (https://github.com/ozzysChiefDataScientist/flink_java_11_job/tree/main)[this repo] and run `gradle build`
+   1. Pre-compiled JAR [here](https://github.com/ozzysChiefDataScientist/flink_java_11_job/blob/main/build/libs/my_first_flink_job_java_11.jar)
+   2. Alteratively, clone [this repo](https://github.com/ozzysChiefDataScientist/flink_java_11_job/tree/main) and run `gradle build`
 
 ## To Use
 1. In terminal, run `docker compose up`
