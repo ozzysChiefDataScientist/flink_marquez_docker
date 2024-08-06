@@ -20,3 +20,63 @@ services:
     command: taskmanager
     deploy:
       replicas: 2
+
+  db:
+    image: postgres:latest
+    container_name: marquez-db
+    environment:
+      - POSTGRES_USER=marquez
+      - POSTGRES_PASSWORD=marquez
+      - POSTGRES_DB=marquez
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U marquez"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  api:
+    image: "marquezproject/marquez:latest"
+    container_name: marquez-api
+    environment:
+      - MARQUEZ_PORT=5000
+      - MARQUEZ_ADMIN_PORT=5001
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_USER=marquez
+      - DB_PASSWORD=marquez
+      - DB_NAME=marquez
+    ports:
+      - "5000:5000"
+      - "5001:5001"
+    volumes:
+      - data:/opt/marquez
+      - ./wait-for-it.sh:/opt/marquez/wait-for-it.sh
+    links:
+      - "db:postgres"
+    depends_on:
+      db:
+        condition: service_healthy
+    entrypoint:
+      - /opt/marquez/wait-for-it.sh
+      - db:5432
+      - --
+      - ./entrypoint.sh
+
+  web:
+    image: "marquezproject/marquez-web:${TAG}"
+    container_name: marquez-web
+    environment:
+      - MARQUEZ_HOST=api
+      - MARQUEZ_PORT=${API_PORT}
+    ports:
+      - "${WEB_PORT}:${WEB_PORT}"
+    depends_on:
+      - api
+
+volumes:
+  db-data:
+  data:
