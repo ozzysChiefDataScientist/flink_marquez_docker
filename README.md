@@ -1,6 +1,6 @@
 ## Outcomes
 1. Spins up a Flink container_name
-2. Runs a simple [https://github.com/ozzysChiefDataScientist/flink_java_11_job](streaming Word Count job) (credit: [https://github.com/apache/flink/tree/master/flink-examples/flink-examples-streaming/src/main/java/org/apache/flink/streaming/examples/wordcount(Apache Software Foundation))
+2. Runs a simple [streaming Word Count job](https://github.com/ozzysChiefDataScientist/flink_java_11_job) (credit: [Apache Software Foundation](https://github.com/apache/flink/tree/master/flink-examples/flink-examples-streaming/src/main/java/org/apache/flink/streaming/examples/wordcount))
 
 ## To Use
 1. In termianl, run `docker compose up`
