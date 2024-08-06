@@ -2,8 +2,13 @@
 1. Spins up a Flink container_name
 2. Runs a simple [streaming Word Count job](https://github.com/ozzysChiefDataScientist/flink_java_11_job) (credit: [Apache Software Foundation](https://github.com/apache/flink/tree/master/flink-examples/flink-examples-streaming/src/main/java/org/apache/flink/streaming/examples/wordcount))
 
+## Prerequisites
+1. Download the JAR file used in this example into the root folder
+   1. Pre-compiled JAR [https://github.com/ozzysChiefDataScientist/flink_java_11_job/blob/main/build/libs/my_first_flink_job_java_11.jar](here)
+   2. Alteratively, clone (https://github.com/ozzysChiefDataScientist/flink_java_11_job/tree/main)[this repo] and run `gradle build`
+
 ## To Use
-1. In termianl, run `docker compose up`
+1. In terminal, run `docker compose up`
 2. Visit [http://localhost:8081/#/overview](http://localhost:8081/#/overview) to see Flink dashboard
 3. In a separate terminal tab, run:
    1. `docker cp my_first_flink_job/build/libs/my_first_flink_job.jar jobmanager:/job.jar`
