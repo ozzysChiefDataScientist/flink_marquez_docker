@@ -12,4 +12,7 @@
 1. In terminal, run `docker compose up`
 2. Visit [http://localhost:8081/#/overview](http://localhost:8081/#/overview) to see Flink dashboard
 3. Visit [http://localhost:3000/](http://localhost:3000/) to see Marquez web UI
-4. [COMING SOON] Run simple streaming word count job
+4. In a separate terminal tab, run:
+   1. `docker cp flink_and_open_lineage.jar jobmanager:/job.jar`
+   2. `docker exec -it jobmanager /bin/bash`
+   3. Inside the docker container, run `./bin/flink run -c org.gradle.example.simple.WordCount /job.jar`
